@@ -1,15 +1,25 @@
 package com.kayvanbree.f10k.api.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "collection")
 public class Collection {
+    @Id()
     private String userId;
 
+    @Column
+    @ElementCollection(targetClass=String.class)
     private List<String> tracks;
+
+    @Column
+    @ElementCollection(targetClass=String.class)
     private List<String> albums;
+
+    @Column
+    @ElementCollection(targetClass=String.class)
     private List<String> artists;
 
     public Collection(String userId) {
